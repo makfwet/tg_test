@@ -1,7 +1,6 @@
 import os
 import asyncio
 
-from aiogram.types import BotCommandScopeAllPrivateChats
 from dotenv import find_dotenv, load_dotenv
 from aiogram import Dispatcher, Bot
 from aiogram.enums import ParseMode
@@ -15,10 +14,7 @@ TOKEN = os.getenv("TOKEN")
 
 
 dp = Dispatcher()
-dp.include_routers(not_admin.router_not_admin,
-                   commands.router_commands,
-                   selection.router_selection,
-                   find_ad.router_find_ad)
+dp.include_routers(commands.router_commands, new_order.router_new_order)
 
 
 Bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML,
